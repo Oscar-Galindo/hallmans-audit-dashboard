@@ -180,18 +180,18 @@ function CategoryCard({ cat }) {
   const [open, setOpen] = useState(false);
   return (
     <div style={{ background: "#111113", border: "1px solid #27272a", borderRadius: 12, marginBottom: 16, overflow: "hidden" }}>
-      <div onClick={() => setOpen(!open)}
+      <div className="category-header" onClick={() => setOpen(!open)}
         style={{ padding: "20px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer", transition: "background .2s" }}
         onMouseEnter={e => e.currentTarget.style.background = "#19191d"}
         onMouseLeave={e => e.currentTarget.style.background = "transparent"}>
-        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-          <div style={{ width: 40, height: 40, borderRadius: 10, background: "#19191d", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18 }}>{cat.icon}</div>
-          <div>
+        <div style={{ display: "flex", alignItems: "center", gap: 16, minWidth: 0 }}>
+          <div style={{ width: 40, height: 40, borderRadius: 10, background: "#19191d", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, flexShrink: 0 }}>{cat.icon}</div>
+          <div style={{ minWidth: 0 }}>
             <h3 style={{ fontSize: 16, fontWeight: 600, margin: 0 }}>{cat.name}</h3>
             <span style={{ fontSize: 13, color: "#71717a" }}>{cat.desc}</span>
           </div>
         </div>
-        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+        <div className="category-right" style={{ display: "flex", alignItems: "center", gap: 12, flexShrink: 0 }}>
           <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 36, height: 28, borderRadius: 6, fontSize: 13, fontWeight: 700, background: gradeBg(cat.grade), color: gradeColor(cat.grade) }}>{cat.grade}</span>
           <span style={{ fontSize: 16, color: "#71717a", transition: "transform .2s", transform: open ? "rotate(180deg)" : "none" }}>▼</span>
         </div>
@@ -229,7 +229,7 @@ export default function AuditDashboard() {
             <img src="https://res.cloudinary.com/dhs9d8tou/image/upload/v1769829242/onmlogo_bhcbxa.png" alt="Online Nexus Marketing" style={{ width: 36, height: 36, borderRadius: 8, objectFit: "cover" }} />
             <span style={{ fontSize: 13, color: "#a1a1aa", fontWeight: 500, letterSpacing: .5, textTransform: "uppercase" }}>Website Audit Report</span>
           </div>
-          <div style={{ display: "flex", gap: 8 }}>
+          <div className="nav-links" style={{ display: "flex", gap: 8 }}>
             {["Overview", "Findings", "Scorecard", "Details", "Next Steps"].map(s => (
               <a key={s} href={`#${s.toLowerCase().replace(/ /g, "-")}`}
                 style={{ fontSize: 13, color: "#71717a", textDecoration: "none", padding: "6px 14px", borderRadius: 6, fontWeight: 500 }}>{s}</a>
@@ -239,7 +239,7 @@ export default function AuditDashboard() {
       </nav>
 
       {/* Hero */}
-      <section id="overview" style={{ padding: "80px 0 60px", textAlign: "center", position: "relative", overflow: "hidden" }}>
+      <section id="overview" className="hero-section" style={{ padding: "80px 0 60px", textAlign: "center", position: "relative", overflow: "hidden" }}>
         <div style={{ maxWidth: 1080, margin: "0 auto", padding: "0 24px" }}>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#111113", border: "1px solid #27272a", padding: "8px 16px", borderRadius: 100, fontSize: 12, color: "#a1a1aa", marginBottom: 24, fontWeight: 500, letterSpacing: .3, textTransform: "uppercase" }}>
             <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#276EF1", animation: "pulse 2s infinite" }} /> Audit Complete
@@ -254,9 +254,9 @@ export default function AuditDashboard() {
 
       {/* Overall Score */}
       <section style={{ padding: "40px 0 60px" }}>
-        <div style={{ maxWidth: 1080, margin: "0 auto", padding: "0 24px", display: "grid", gridTemplateColumns: "280px 1fr", gap: 40, alignItems: "center" }}>
+        <div className="score-grid" style={{ maxWidth: 1080, margin: "0 auto", padding: "0 24px", display: "grid", gridTemplateColumns: "280px 1fr", gap: 40, alignItems: "center" }}>
           <AnimatedGauge score={overall} grade="F" />
-          <div>
+          <div className="score-text">
             <h2 style={{ fontSize: 28, fontWeight: 700, letterSpacing: -.5, marginBottom: 8 }}>Significant Issues Found</h2>
             <p style={{ color: "#a1a1aa", fontSize: 15, lineHeight: 1.7, maxWidth: 480 }}>
               The audit uncovered critical problems across accessibility, SEO, and user experience that are costing real leads and visibility. The site is built on a limited website builder platform with only 3 pages, broken image descriptions, no contact form, and no search engine optimization. Visitors searching for power washing in Atlantic County are unlikely to find this site.
@@ -267,7 +267,7 @@ export default function AuditDashboard() {
 
       {/* Stats */}
       <div style={{ maxWidth: 1080, margin: "0 auto", padding: "0 24px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", gap: 16, margin: "48px 0" }}>
+        <div className="stat-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", gap: 16, margin: "48px 0" }}>
           {[
             { num: "3", label: "Total Pages", color: "#ef4444" },
             { num: "0", label: "Contact Forms", color: "#ef4444" },
@@ -316,7 +316,7 @@ export default function AuditDashboard() {
             <p style={{ color: "#a1a1aa", fontSize: 15, marginTop: 4 }}>How the site performs across seven audit categories</p>
           </div>
           <div style={{ background: "#111113", border: "1px solid #27272a", borderRadius: 12, overflow: "hidden" }}>
-            <table style={{ width: "100%", borderCollapse: "separate", borderSpacing: 0 }}>
+            <table className="scorecard-table" style={{ width: "100%", borderCollapse: "separate", borderSpacing: 0 }}>
               <thead>
                 <tr>
                   {["Category", "Grade", "Score", ""].map((h, i) => (
@@ -357,7 +357,7 @@ export default function AuditDashboard() {
       </section>
 
       {/* CTA */}
-      <section id="next-steps" style={{ padding: "64px 0", margin: "48px 0", borderTop: "1px solid #27272a", borderBottom: "1px solid #27272a", textAlign: "center" }}>
+      <section id="next-steps" className="cta-section" style={{ padding: "64px 0", margin: "48px 0", borderTop: "1px solid #27272a", borderBottom: "1px solid #27272a", textAlign: "center" }}>
         <div style={{ maxWidth: 1080, margin: "0 auto", padding: "0 24px" }}>
           <img src="https://res.cloudinary.com/dhs9d8tou/image/upload/v1768967465/DSC07006_mh1pnc.jpg" alt="Oscar Galindo"
             style={{ width: 80, height: 80, borderRadius: "50%", border: "2px solid #27272a", margin: "0 auto 20px", display: "block", objectFit: "cover" }} />
@@ -379,7 +379,25 @@ export default function AuditDashboard() {
         &copy; 2025 <a href="https://onlinenexusmarketing.com" target="_blank" rel="noopener noreferrer" style={{ color: "#a1a1aa", textDecoration: "none" }}>Online Nexus Marketing</a> &bull; Website Audit Report
       </footer>
 
-      <style>{`@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}`}</style>
+      <style>{`
+        @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+        @media(max-width:768px){
+          .nav-links{display:none !important}
+          .score-grid{grid-template-columns:1fr !important;justify-items:center;text-align:center}
+          .score-text{text-align:center}
+          .scorecard-table th:nth-child(3),
+          .scorecard-table th:nth-child(4),
+          .scorecard-table td:nth-child(3),
+          .scorecard-table td:nth-child(4){display:none}
+          .category-header{flex-wrap:wrap;gap:12px}
+          .category-right{margin-left:auto}
+          .hero-section{padding:48px 0 36px !important}
+          .cta-section{padding:40px 0 !important;margin:24px 0 !important}
+        }
+        @media(max-width:480px){
+          .stat-grid{grid-template-columns:1fr 1fr !important}
+        }
+      `}</style>
     </div>
   );
 }
