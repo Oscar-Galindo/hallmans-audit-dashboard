@@ -226,9 +226,7 @@ export default function AuditDashboard() {
       <nav style={{ position: "sticky", top: 0, zIndex: 100, background: "rgba(9,9,11,.85)", backdropFilter: "blur(20px)", borderBottom: "1px solid #27272a", padding: "16px 0" }}>
         <div style={{ maxWidth: 1080, margin: "0 auto", padding: "0 24px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-            <img src="/logo.png" alt="Online Nexus Marketing" style={{ width: 36, height: 36, borderRadius: 8, objectFit: "cover" }}
-              onError={e => { e.target.style.display = "none"; e.target.nextSibling.style.display = "flex"; }} />
-            <div style={{ width: 36, height: 36, borderRadius: 8, background: "#276EF1", display: "none", alignItems: "center", justifyContent: "center", fontWeight: 700, fontSize: 14, color: "#fff" }}>ON</div>
+            <img src="https://res.cloudinary.com/dhs9d8tou/image/upload/v1769829242/onmlogo_bhcbxa.png" alt="Online Nexus Marketing" style={{ width: 36, height: 36, borderRadius: 8, objectFit: "cover" }} />
             <span style={{ fontSize: 13, color: "#a1a1aa", fontWeight: 500, letterSpacing: .5, textTransform: "uppercase" }}>Website Audit Report</span>
           </div>
           <div style={{ display: "flex", gap: 8 }}>
@@ -361,13 +359,8 @@ export default function AuditDashboard() {
       {/* CTA */}
       <section id="next-steps" style={{ padding: "64px 0", margin: "48px 0", borderTop: "1px solid #27272a", borderBottom: "1px solid #27272a", textAlign: "center" }}>
         <div style={{ maxWidth: 1080, margin: "0 auto", padding: "0 24px" }}>
-          <img src="/headshot.jpg" alt="Oscar Galindo"
-            style={{ width: 80, height: 80, borderRadius: "50%", border: "2px solid #27272a", margin: "0 auto 20px", display: "block", objectFit: "cover" }}
-            onError={e => {
-              e.target.style.display = "none";
-              e.target.nextSibling.style.display = "flex";
-            }} />
-          <div style={{ width: 80, height: 80, borderRadius: "50%", background: "#19191d", border: "2px solid #27272a", margin: "0 auto 20px", display: "none", alignItems: "center", justifyContent: "center", fontSize: 28, fontWeight: 700, color: "#276EF1" }}>OG</div>
+          <img src="https://res.cloudinary.com/dhs9d8tou/image/upload/v1768967465/DSC07006_mh1pnc.jpg" alt="Oscar Galindo"
+            style={{ width: 80, height: 80, borderRadius: "50%", border: "2px solid #27272a", margin: "0 auto 20px", display: "block", objectFit: "cover" }} />
           <h2 style={{ fontSize: 28, fontWeight: 700, letterSpacing: -.5, marginBottom: 8 }}>Ready to Talk About It?</h2>
           <p style={{ color: "#a1a1aa", fontSize: 15, marginBottom: 28, maxWidth: 460, marginLeft: "auto", marginRight: "auto" }}>This audit is yours whether we work together or not. If you want to walk through the findings and talk about what a rebuild would look like, I&apos;m happy to.</p>
           <a href={BRAND.calendly} target="_blank" rel="noopener noreferrer"
