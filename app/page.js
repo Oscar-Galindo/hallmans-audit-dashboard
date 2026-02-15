@@ -220,6 +220,7 @@ function CategoryCard({ cat }) {
 
 export default function AuditDashboard() {
   const overall = 51;
+  const [menuOpen, setMenuOpen] = useState(false);
   return (
     <div style={{ fontFamily: "'DM Sans',system-ui,sans-serif", background: "#09090b", color: "#fafafa", minHeight: "100vh", WebkitFontSmoothing: "antialiased" }}>
       {/* Nav */}
@@ -235,7 +236,20 @@ export default function AuditDashboard() {
                 style={{ fontSize: 13, color: "#71717a", textDecoration: "none", padding: "6px 14px", borderRadius: 6, fontWeight: 500 }}>{s}</a>
             ))}
           </div>
+          <button className="mobile-menu-btn" onClick={() => setMenuOpen(!menuOpen)}
+            style={{ display: "none", background: "none", border: "1px solid #27272a", borderRadius: 8, padding: "6px 10px", cursor: "pointer", color: "#a1a1aa", fontSize: 18, lineHeight: 1 }}
+            aria-label="Toggle menu">
+            {menuOpen ? "✕" : "☰"}
+          </button>
         </div>
+        {menuOpen && (
+          <div className="mobile-menu" style={{ display: "none", flexDirection: "column", padding: "12px 24px 16px", borderTop: "1px solid #27272a", maxWidth: 1080, margin: "0 auto" }}>
+            {["Overview", "Findings", "Scorecard", "Details", "Next Steps"].map(s => (
+              <a key={s} href={`#${s.toLowerCase().replace(/ /g, "-")}`} onClick={() => setMenuOpen(false)}
+                style={{ fontSize: 14, color: "#a1a1aa", textDecoration: "none", padding: "10px 0", borderBottom: "1px solid #1a1a1e", fontWeight: 500 }}>{s}</a>
+            ))}
+          </div>
+        )}
       </nav>
 
       {/* Hero */}
@@ -383,6 +397,8 @@ export default function AuditDashboard() {
         @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
         @media(max-width:768px){
           .nav-links{display:none !important}
+          .mobile-menu-btn{display:block !important}
+          .mobile-menu{display:flex !important}
           .score-grid{grid-template-columns:1fr !important;justify-items:center;text-align:center}
           .score-text{text-align:center}
           .scorecard-table th:nth-child(3),
